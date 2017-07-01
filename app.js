@@ -1,9 +1,11 @@
 const express = require("express");
 const hbs = require("hbs");
 const fs = require("fs");
+
 const port = process.env.PORT||3000;
+
 var app = express();
-hbs.registerPartials(__dirname+"/views/partials")
+hbs.registerPartials(__dirname+"/views/partials");
 app.set("view engine","hbs");
 app.use((req,res,next)=>{
     var now = new Date().toString();
@@ -29,6 +31,13 @@ app.get("/",(req,res)=>{
 app.get("/about",(req,res)=>{
     res.render("about.hbs",{
         pageTitle:"About Us"        
+    });
+});
+
+app.get("/projects",(req,res)=>{
+    res.render("projects.hbs",{
+        pageTitle:"Projects",
+        welcomeMessage:"Our projects listed here"       
     });
 });
 
